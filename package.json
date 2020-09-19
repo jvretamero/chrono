@@ -1,0 +1,15 @@
+{
+    "name": "chrono",
+    "version": "1.0.0",
+    "description": "Calendário Vanilla",
+    "main": "index.js",
+    "scripts": {
+        "serve": "serve src"
+    },
+    "keywords": [],
+    "author": "João Vitor Retamero",
+    "license": "MIT",
+    "devDependencies": {
+        "serve": "^11.3.2"
+    }
+}
