@@ -5,9 +5,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chrono</title>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var selectMes = document.getElementById("mes");
+            var selectAno = document.getElementById("ano");
+
+            var hoje = new Date();
+            var anoAtual = hoje.getFullYear();
+            var mesAtual = hoje.getMonth();
+            var meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+
+            function gerarMeses(selectMes) {
+                for (var indiceMes in meses) {
+                    var option = document.createElement("option");
+                    option.value = indiceMes;
+                    option.innerText = meses[indiceMes];
+
+                    if (indiceMes == mesAtual) {
+                        option.setAttribute("selected", true);
+                    }
+
+                    selectMes.appendChild(option);
+                }
+            };
+
+            function gerarAnos(selectAno) {
+                var anos = [
+                    anoAtual - 1,
+                    anoAtual,
+                    anoAtual + 2
+                ];
+
+                for (var ano of anos) {
+                    var option = document.createElement("option");
+                    option.value = ano;
+                    option.innerText = ano;
+
+                    if (ano == anoAtual) {
+                        option.setAttribute("selected", true);
+                    }
+
+                    selectAno.appendChild(option);
+                }
+            };
+
+            gerarAnos(selectAno);
+            gerarMeses(selectMes);
+        });
+    </script>
 </head>
 
 <body>
+    <div>
+        <select id="mes"></select>
+        <select id="ano"></select>
+
+        <button id="mes-anterior" type="button">&lt;</button>
+        <button id="mes-proximo" type="button">&gt;</button>
+    </div>
+
+    <table>
+        <thead>
+            <th>Dom</th>
+            <th>Seg</th>
+            <th>Ter</th>
+            <th>Qua</th>
+            <th>Qui</th>
+            <th>Sex</th>
+            <th>Sab</th>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+            </tr>
+
+            <tr>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 
 </html>
