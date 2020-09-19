@@ -8,13 +8,43 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            var selectMes = document.getElementById("mes");
-            var selectAno = document.getElementById("ano");
+            var selectMes = document.getElementById("select-mes");
+            var selectAno = document.getElementById("select-ano");
+            var diasMes = document.getElementById("dias-mes");
 
             var hoje = new Date();
             var anoAtual = hoje.getFullYear();
             var mesAtual = hoje.getMonth();
             var meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+
+            function proximoMes() {
+                if (mesAtual == 11) {
+                    anoAtual++;
+                    mesAtual = 0;
+                } else {
+                    mesAtual++;
+                }
+
+                atualizarFiltros();
+                atualizarDias();
+            }
+
+            function mesAnterior() {
+                if (mesAtual == 0) {
+                    anoAtual--;
+                    mesAtual = 11;
+                } else {
+                    mesAtual--;
+                }
+
+                atualizarFiltros();
+                atualizarDias();
+            }
+
+            function atualizarFiltros() {
+                selectMes.value = mesAtual;
+                selectAno.value = anoAtual;
+            }
 
             function gerarMeses(selectMes) {
                 for (var indiceMes in meses) {
@@ -34,7 +64,7 @@
                 var anos = [
                     anoAtual - 1,
                     anoAtual,
-                    anoAtual + 2
+                    anoAtual + 1
                 ];
 
                 for (var ano of anos) {
@@ -50,19 +80,26 @@
                 }
             };
 
+            function atualizarDias() {
+                diasMes.innerHTML = "";
+            };
+
             gerarAnos(selectAno);
             gerarMeses(selectMes);
+
+            document.getElementById("btn-proximo-mes").addEventListener("click", proximoMes);
+            document.getElementById("btn-mes-anterior").addEventListener("click", mesAnterior);
         });
     </script>
 </head>
 
 <body>
     <div>
-        <select id="mes"></select>
-        <select id="ano"></select>
+        <select id="select-mes"></select>
+        <select id="select-ano"></select>
 
-        <button id="mes-anterior" type="button">&lt;</button>
-        <button id="mes-proximo" type="button">&gt;</button>
+        <button id="btn-mes-anterior" type="button">&lt;</button>
+        <button id="btn-proximo-mes" type="button">&gt;</button>
     </div>
 
     <table>
@@ -76,27 +113,7 @@
             <th>Sab</th>
         </thead>
 
-        <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-            </tr>
-
-            <tr>
-                <td>6</td>
-                <td>7</td>
-                <td>8</td>
-                <td>9</td>
-                <td>10</td>
-                <td>11</td>
-                <td>12</td>
-            </tr>
-        </tbody>
+        <tbody id="dias-mes"></tbody>
     </table>
 </body>
 
