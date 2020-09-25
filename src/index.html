@@ -80,9 +80,17 @@
                 }
             };
 
-            function criarTrDia(numero) {
+            function criarTrDia(ano, mes, dia) {
                 var td = document.createElement("td");
-                if (numero) td.innerText = numero;
+
+                if (ano && mes && dia) {
+                    td.innerText = dia;
+                    td.dataset.dia = new Date(ano, mes, dia);
+                    td.addEventListener("click", function (e) {
+                        alert(this.dataset.dia);
+                    });
+                }
+
                 return td;
             }
 
@@ -103,7 +111,7 @@
                         } else if (dia > totalDias) {
                             break;
                         } else {
-                            semanaTr.appendChild(criarTrDia(dia));
+                            semanaTr.appendChild(criarTrDia(anoAtual, mesAtual, dia));
                             dia++;
                         }
                     }
