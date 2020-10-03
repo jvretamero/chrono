@@ -195,6 +195,16 @@
             gerarAnos(selectAno);
             gerarMeses(selectMes);
 
+            selectMes.addEventListener("change", function () {
+                mesAtual = selectMes.value;
+                atualizarDias();
+            });
+
+            selectAno.addEventListener("change", function () {
+                anoAtual = selectAno.value;
+                atualizarDias();
+            });
+
             atualizarDias();
 
             document.getElementById("btn-proximo-mes").addEventListener("click", proximoMes);
