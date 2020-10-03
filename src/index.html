@@ -14,35 +14,40 @@
 
         .table-mes {
             table-layout: fixed;
-            background-color: whitesmoke;
             padding: 1rem;
             border-collapse: collapse;
         }
 
-        .table-mes thead tr {
-            background-color: grey;
+        .table-mes thead {
+            border-bottom: 1px solid #ccc;
         }
 
         .table-mes td,
         .table-mes th {
-            padding: .75rem;
+            width: 3rem;
+            height: 3rem;
+            padding: 0;
             text-align: center;
         }
 
         .table-mes tbody tr:hover {
-            background-color: lightgrey;
+            background-color: #eee;
         }
 
-        .table-mes td:hover {
-            background-color: lightslategrey;
+        .table-mes td.com-dia:hover {
+            background-color: #ccc;
             cursor: pointer;
+            border-radius: 50%;
         }
 
         button,
         select {
             background-color: #fff;
             cursor: pointer;
-            padding: 1rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            padding-left: .5rem;
+            padding-right: .5rem;
             text-align: center;
             justify-content: center;
             white-space: nowrap;
@@ -60,6 +65,10 @@
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
+        }
+
+        .botao {
+            padding: 1rem;
         }
 
         .calendario-nav {
@@ -147,6 +156,7 @@
                 if (ano && mes && dia) {
                     td.innerText = dia;
                     td.dataset.dia = new Date(ano, mes, dia);
+                    td.classList.add("com-dia");
                     td.addEventListener("click", function (e) {
                         alert(this.dataset.dia);
                     });
