@@ -92,9 +92,12 @@
             var diasMes = document.getElementById("dias-mes");
 
             var hoje = new Date();
+            hoje.setHours(0, 0, 0, 0);
+
             var anoAtual = hoje.getFullYear();
             var mesAtual = hoje.getMonth();
             var meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+            var diaSelecionado = hoje;
 
             function proximoMes() {
                 if (mesAtual == 11) {
@@ -159,7 +162,7 @@
                 }
             };
 
-            function definirDia(el, dia) {
+            function definirDia(el) {
                 if (el.classList.contains("ativo"))
                     return;
 
@@ -167,9 +170,9 @@
                 if (diaAtivo)
                     diaAtivo.classList.remove("ativo");
 
-                console.log(dia);
-
                 el.classList.add("ativo");
+
+                diaSelecionado = new Date(el.dataset.data);
             }
 
             function criarTrDia(ano, mes, dia) {
@@ -177,10 +180,11 @@
 
                 if (ano != null && mes != null && dia != null) {
                     td.innerText = dia;
-                    td.dataset.dia = new Date(ano, mes, dia);
+                    td.dataset.dia = dia;
+                    td.dataset.data = new Date(ano, mes, dia);
                     td.classList.add("com-dia");
                     td.addEventListener("click", function (e) {
-                        definirDia(this, this.dataset.dia);
+                        definirDia(this,);
                     });
                 }
 
@@ -211,6 +215,11 @@
                     }
 
                     diasMes.appendChild(semanaTr);
+                }
+
+                if (diaSelecionado.getMonth() == mesAtual && diaSelecionado.getFullYear() == anoAtual) {
+                    var tdDia = document.querySelector(`.table-mes td[data-dia="${diaSelecionado.getDate()}"]`);
+                    if (tdDia) definirDia(tdDia);
                 }
             };
 
