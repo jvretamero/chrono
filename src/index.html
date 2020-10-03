@@ -139,10 +139,11 @@
                     var semanaTr = document.createElement("tr");
 
                     for (var diaSemana = 0; diaSemana < 7; diaSemana++) {
-                        if (semana == 0 && diaSemana < didSemanaInicial) {
+                        var naoComecouMes = semana == 0 && diaSemana < didSemanaInicial;
+                        var terminouMes = dia > totalDias;
+
+                        if (naoComecouMes || terminouMes) {
                             semanaTr.appendChild(criarTrDia());
-                        } else if (dia > totalDias) {
-                            break;
                         } else {
                             semanaTr.appendChild(criarTrDia(anoAtual, mesAtual, dia));
                             dia++;
