@@ -108,6 +108,30 @@
             list-style: none;
         }
 
+        .agendamentos-cabecalho {
+            padding: 1rem;
+        }
+
+        .data-selecionada {
+            margin-right: 1rem;
+            font-size: 1.7rem;
+            font-weight: 600;
+            vertical-align: middle;
+        }
+
+        #novo-agendamento {
+            background-color: #5691b5;
+            border-radius: 50%;
+            width: 2.5rem;
+            height: 2.5rem;
+            padding: 0;
+            color: #fff;
+        }
+
+        #novo-agendamento:hover {
+            background-color: #457b9d;
+        }
+
         .agendamento {
             display: flex;
             flex-direction: row;
@@ -339,8 +363,8 @@
 
         <div class="agendamentos">
             <div class="agendamentos-cabecalho">
-                <span>Data</span>
-                <button type="button">+</button>
+                <span class="data-selecionada">Data</span>
+                <button id="novo-agendamento" type="button" class="botao">+</button>
             </div>
 
             <div class="agendamentos-itens">
