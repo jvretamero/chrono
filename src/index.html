@@ -11,6 +11,7 @@
             font-family: Arial, Helvetica, sans-serif;
             background-color: #F1FAEE;
             font-size: 16px;
+            color: #111;
             margin: 0;
             padding: 0;
             width: 100%;
@@ -99,13 +100,48 @@
 
         .agendamentos {
             flex: 1 0 auto;
-            padding: 1rem;
         }
 
         .agendamentos ul {
             margin: 0;
             padding: 0;
             list-style: none;
+        }
+
+        .agendamento {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            padding: 1rem;
+        }
+
+        .agendamento:hover {
+            cursor: pointer;
+            background-color: #e2f5dc;
+        }
+
+        .agendamento-horario,
+        .agendamento-dados {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .agendamento-dados {
+            margin-left: 2rem;
+        }
+
+        .agendamento-horario .horario-inicio {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .agendamento-horario .horario-termino,
+        .agendamento-dados .categoria {
+            color: #666;
+        }
+
+        .agendamento-dados .descricao {
+            font-size: 1.3rem;
         }
 
         .container {
@@ -311,12 +347,12 @@
                 <ul>
                     <li class="agendamento">
                         <div class="agendamento-horario">
-                            <span>08:30</span>
-                            <span>09:30</span>
+                            <span class="horario-inicio">08:30</span>
+                            <span class="horario-termino">09:30</span>
                         </div>
                         <div class="agendamento-dados">
-                            <span>Marketing</span>
-                            <span>Configurar Heroku</span>
+                            <span class="categoria">Marketing</span>
+                            <span class="descricao">Configurar Heroku</span>
                         </div>
                     </li>
                 </ul>
