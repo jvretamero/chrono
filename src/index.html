@@ -35,9 +35,18 @@
         }
 
         .table-mes td.com-dia:hover {
-            background-color: #ccc;
+            background-color: #ddd;
             cursor: pointer;
             border-radius: 50%;
+        }
+
+        .table-mes td.ativo {
+            background-color: #ccc;
+            border-radius: 50%;
+        }
+
+        .table-mes td.ativo:hover {
+            background-color: #bbb;
         }
 
         button,
@@ -150,6 +159,19 @@
                 }
             };
 
+            function definirDia(el, dia) {
+                if (el.classList.contains("ativo"))
+                    return;
+
+                var diaAtivo = document.querySelector(".table-mes td.ativo");
+                if (diaAtivo)
+                    diaAtivo.classList.remove("ativo");
+
+                console.log(dia);
+
+                el.classList.add("ativo");
+            }
+
             function criarTrDia(ano, mes, dia) {
                 var td = document.createElement("td");
 
@@ -158,7 +180,7 @@
                     td.dataset.dia = new Date(ano, mes, dia);
                     td.classList.add("com-dia");
                     td.addEventListener("click", function (e) {
-                        alert(this.dataset.dia);
+                        definirDia(this, this.dataset.dia);
                     });
                 }
 
