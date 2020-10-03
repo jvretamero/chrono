@@ -25,7 +25,7 @@
 
         .table-mes td,
         .table-mes th {
-            padding: 1rem;
+            padding: .75rem;
             text-align: center;
         }
 
@@ -36,6 +36,34 @@
         .table-mes td:hover {
             background-color: lightslategrey;
             cursor: pointer;
+        }
+
+        button,
+        select {
+            background-color: #fff;
+            cursor: pointer;
+            padding: 1rem;
+            text-align: center;
+            justify-content: center;
+            white-space: nowrap;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+        }
+
+        button:hover,
+        select:hover {
+            background-color: #eee;
+        }
+
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        .calendario-nav {
+            margin-bottom: 1rem;
         }
     </style>
 
@@ -166,27 +194,27 @@
 </head>
 
 <body>
-    <div">
+    <div class="calendario-nav">
         <select id="select-mes"></select>
         <select id="select-ano"></select>
 
-        <button id="btn-mes-anterior" type="button">&lt;</button>
-        <button id="btn-proximo-mes" type="button">&gt;</button>
-        </div>
+        <button id="btn-mes-anterior" type="button" class="botao">&lt;</button>
+        <button id="btn-proximo-mes" type="button" class="botao">&gt;</button>
+    </div>
 
-        <table class="table-mes">
-            <thead>
-                <th>Dom</th>
-                <th>Seg</th>
-                <th>Ter</th>
-                <th>Qua</th>
-                <th>Qui</th>
-                <th>Sex</th>
-                <th>Sab</th>
-            </thead>
+    <table class="table-mes">
+        <thead>
+            <th>Dom</th>
+            <th>Seg</th>
+            <th>Ter</th>
+            <th>Qua</th>
+            <th>Qui</th>
+            <th>Sex</th>
+            <th>Sab</th>
+        </thead>
 
-            <tbody id="dias-mes"></tbody>
-        </table>
+        <tbody id="dias-mes"></tbody>
+    </table>
 </body>
 
 </html>
