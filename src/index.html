@@ -73,12 +73,12 @@
             border: none;
         }
 
-        button:hover,
-        select:hover {
+        .botao:hover,
+        .select:hover {
             background-color: #8ccfd1;
         }
 
-        select {
+        .select {
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
@@ -95,7 +95,24 @@
         .calendario {
             background-color: #A8DADC;
             height: 100vh;
-            display: inline-block;
+        }
+
+        .agendamentos {
+            flex: 1 0 auto;
+            padding: 1rem;
+        }
+
+        .agendamentos ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
         }
     </style>
 
@@ -259,31 +276,53 @@
 </head>
 
 <body>
-    <div class="calendario">
-        <div class="calendario-nav">
-            <select id="select-mes"></select>
-            <select id="select-ano"></select>
+    <div class="container">
+        <div class="calendario">
+            <div class="calendario-nav">
+                <select id="select-mes" class="select"></select>
+                <select id="select-ano" class="select"></select>
 
-            <button id="btn-mes-anterior" type="button" class="botao">&lt;</button>
-            <button id="btn-proximo-mes" type="button" class="botao">&gt;</button>
+                <button id="btn-mes-anterior" type="button" class="botao">&lt;</button>
+                <button id="btn-proximo-mes" type="button" class="botao">&gt;</button>
+            </div>
+
+            <table class="table-mes">
+                <thead>
+                    <th>Dom</th>
+                    <th>Seg</th>
+                    <th>Ter</th>
+                    <th>Qua</th>
+                    <th>Qui</th>
+                    <th>Sex</th>
+                    <th>Sab</th>
+                </thead>
+
+                <tbody id="dias-mes"></tbody>
+            </table>
         </div>
 
-        <table class="table-mes">
-            <thead>
-                <th>Dom</th>
-                <th>Seg</th>
-                <th>Ter</th>
-                <th>Qua</th>
-                <th>Qui</th>
-                <th>Sex</th>
-                <th>Sab</th>
-            </thead>
+        <div class="agendamentos">
+            <div class="agendamentos-cabecalho">
+                <span>Data</span>
+                <button type="button">+</button>
+            </div>
 
-            <tbody id="dias-mes"></tbody>
-        </table>
+            <div class="agendamentos-itens">
+                <ul>
+                    <li class="agendamento">
+                        <div class="agendamento-horario">
+                            <span>08:30</span>
+                            <span>09:30</span>
+                        </div>
+                        <div class="agendamento-dados">
+                            <span>Marketing</span>
+                            <span>Configurar Heroku</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-
-    <div class="agendamentos"></div>
 </body>
 
 </html>
