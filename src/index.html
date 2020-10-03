@@ -153,7 +153,7 @@
             function criarTrDia(ano, mes, dia) {
                 var td = document.createElement("td");
 
-                if (ano && mes && dia) {
+                if (ano != null && mes != null && dia != null) {
                     td.innerText = dia;
                     td.dataset.dia = new Date(ano, mes, dia);
                     td.classList.add("com-dia");
