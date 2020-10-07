@@ -192,15 +192,25 @@ body {
 .modal-cabecalho {
     padding-bottom: 1rem;
     border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 
-.modal-cabecalho h3 {
+.modal-titulo {
     margin: 0;
+    flex: 1;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .modal-botao-fechar {
-    position: absolute;
-    margin: 0;
-    top: 1rem;
-    right: 2rem;
+    font-weight: 400;
+    color: #fff;
+    background-color: #5691b5;
+    padding: .5rem;
+}
+
+.modal-botao-fechar:hover {
+    background-color: #457b9d;
 }
