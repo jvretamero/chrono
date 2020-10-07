@@ -49,8 +49,8 @@ body {
     background-color: #ef7d87;
 }
 
-button,
-select {
+.botao,
+.select {
     background-color: transparent;
     cursor: pointer;
     padding-top: 1rem;
@@ -164,4 +164,43 @@ select {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-top: 5rem;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-conteudo {
+    position: relative;
+    background-color: #fff;
+    width: 35rem;
+    max-width: 100%;
+    margin: auto;
+    padding: 2rem;
+    border-radius: .5rem;
+}
+
+.modal-cabecalho {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.modal-cabecalho h3 {
+    margin: 0;
+}
+
+.modal-botao-fechar {
+    position: absolute;
+    margin: 0;
+    top: 1rem;
+    right: 2rem;
 }
