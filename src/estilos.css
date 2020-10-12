@@ -155,7 +155,7 @@ body {
     color: #666;
 }
 
-.agendamento-dados .descricao {
+.agendamento-dados .titulo {
     font-size: 1.3rem;
 }
 
@@ -213,4 +213,45 @@ body {
 
 .modal-botao-fechar:hover {
     background-color: #457b9d;
+}
+
+.label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: .5rem;
+}
+
+.campo-entrada {
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    max-width: 100%;
+    padding: .5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    vertical-align: top;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 8rem;
+    max-height: 16rem;
+}
+
+.input:focus,
+.input:active,
+.textarea:focus,
+.textarea:active {
+    border-color: #3273dc;
+    box-shadow: 0 0 0 3px rgba(50, 115, 220, 0.25);
+    outline: none;
 }
