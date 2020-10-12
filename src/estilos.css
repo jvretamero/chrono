@@ -182,11 +182,16 @@ body {
 .modal-conteudo {
     position: relative;
     background-color: #fff;
-    width: 35rem;
-    max-width: 100%;
+    width: 100%;
     margin: auto;
     padding: 2rem;
     border-radius: .5rem;
+}
+
+@media screen and (min-width: 769px) {
+    .modal-conteudo {
+        width: 35rem;
+    }
 }
 
 .modal-cabecalho {
@@ -206,13 +211,13 @@ body {
 
 .modal-botao-fechar {
     font-weight: 400;
-    color: #fff;
-    background-color: #5691b5;
+    background-color: #f5f5f5;
     padding: .5rem;
+    border-radius: .25rem;
 }
 
 .modal-botao-fechar:hover {
-    background-color: #457b9d;
+    background-color: #eee;
 }
 
 .label {
@@ -254,4 +259,23 @@ body {
     border-color: #3273dc;
     box-shadow: 0 0 0 3px rgba(50, 115, 220, 0.25);
     outline: none;
+}
+
+.modal-rodape {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+.botao-salvar {
+    font-weight: 400;
+    color: #fff;
+    background-color: #5691b5;
+    padding: .5rem;
+    border-radius: .25rem;
+}
+
+.botao-salvar:hover {
+    background-color: #457b9d;
 }
