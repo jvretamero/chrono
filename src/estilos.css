@@ -242,8 +242,22 @@ body {
     margin-bottom: 1rem;
 }
 
+.campo-entrada .campo-entrada {
+    margin-bottom: 0;
+}
+
+.campo-entrada .campo-entrada:not(:first-child) {
+    margin-left: 1rem;
+}
+
+.campo-entrada-grupo {
+    display: flex;
+    justify-content: flex-start;
+}
+
 .input,
-.textarea {
+.textarea,
+.select-entrada {
     width: 100%;
     max-width: 100%;
     padding: .5rem;
@@ -265,7 +279,9 @@ body {
 .input:focus,
 .input:active,
 .textarea:focus,
-.textarea:active {
+.textarea:active,
+.select-entrada:focus,
+.select-entrada:active {
     border-color: #3273dc;
     box-shadow: 0 0 0 3px rgba(50, 115, 220, 0.25);
     outline: none;

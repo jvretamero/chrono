@@ -59,7 +59,7 @@
     </div>
 
     <div id="modal-agendamento" class="modal">
-        <div class="modal-fundo"></div>
+        <div id="modal-fundo" class="modal-fundo"></div>
         <div class="modal-conteudo">
             <div class="modal-cabecalho">
                 <span class="modal-titulo">Agendamento</span>
@@ -71,9 +71,30 @@
                 <input class="input" id="ag-data" type="date" name="data">
             </div>
 
+            <div class="campo-entrada campo-entrada-grupo">
+                <div class="campo-entrada">
+                    <label class="label" for="ag-hora-inicial">Hora inicial</label>
+                    <input class="input" id="ag-hora-inicial" type="time" name="hora-inicial">
+                </div>
+
+                <div class="campo-entrada">
+                    <label class="label" for="ag-hora-final">Hora final</label>
+                    <input class="input" id="ag-hora-final" type="time" name="hora-final">
+                </div>
+            </div>
+
             <div class="campo-entrada">
                 <label class="label" for="ag-assunto">Assunto</label>
                 <input class="input" id="ag-assunto" type="text" name="assunto">
+            </div>
+
+            <div class="campo-entrada">
+                <label class="label" for="ag-categoria">Categoria</label>
+                <select id="ag-categoria" class="select-entrada">
+                    <option>Marketing</option>
+                    <option>Recursos Humanos</option>
+                    <option>Tecnologia</option>
+                </select>
             </div>
 
             <div class="campo-entrada">

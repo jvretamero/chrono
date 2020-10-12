@@ -163,11 +163,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var elAgendamento = {
         data: document.getElementById("ag-data"),
+        hora: {
+            inicial: document.getElementById("ag-hora-inicial"),
+            final: document.getElementById("ag-hora-final")
+        },
         assunto: document.getElementById("ag-assunto"),
+        categoria: document.getElementById("ag-categoria"),
         notas: document.getElementById("ag-notas")
     };
 
     document.getElementById("modal-botao-fechar").addEventListener("click", fecharModal);
+    document.getElementById("modal-fundo").addEventListener("click", fecharModal);
     document.getElementById("modal-botao-salvar").addEventListener("click", salvarAgendamento);
     document.getElementById("novo-agendamento").addEventListener("click", novoAgendamento);
 
