@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+    var formatoData = new Intl.DateTimeFormat("pt-BR");
+
     var elRaiz = document.documentElement;
     var selectMes = document.getElementById("select-mes");
     var selectAno = document.getElementById("select-ano");
     var diasMes = document.getElementById("dias-mes");
+    var dataSelecionada = document.getElementById("data-selecionada");
 
     var hoje = new Date();
     hoje.setHours(0, 0, 0, 0);
@@ -86,6 +89,8 @@ document.addEventListener("DOMContentLoaded", function () {
         el.classList.add("ativo");
 
         diaSelecionado = new Date(el.dataset.data);
+
+        atualizarAgendamentos();
     }
 
     function criarTrDia(ano, mes, dia) {
@@ -156,11 +161,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var modalAgendamento = document.getElementById("modal-agendamento");
 
+    var elAgendamento = {
+        data: document.getElementById("ag-data"),
+        assunto: document.getElementById("ag-assunto"),
+        notas: document.getElementById("ag-notas")
+    };
+
     document.getElementById("modal-botao-fechar").addEventListener("click", fecharModal);
     document.getElementById("modal-botao-salvar").addEventListener("click", salvarAgendamento);
     document.getElementById("novo-agendamento").addEventListener("click", novoAgendamento);
 
     function novoAgendamento() {
+        elAgendamento.data.valueAsNumber = diaSelecionado.getTime();
         abrirModal();
     }
 
@@ -176,5 +188,9 @@ document.addEventListener("DOMContentLoaded", function () {
     function fecharModal() {
         modalAgendamento.classList.remove("modal-ativo");
         elRaiz.classList.remove("sem-scroll");
+    }
+
+    function atualizarAgendamentos() {
+        dataSelecionada.innerText = formatoData.format(diaSelecionado);
     }
 });
