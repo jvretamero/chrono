@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="sem-scroll">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -58,12 +58,12 @@
         </div>
     </div>
 
-    <div class="modal ativo">
+    <div id="modal-agendamento" class="modal">
         <div class="modal-fundo"></div>
         <div class="modal-conteudo">
             <div class="modal-cabecalho">
                 <span class="modal-titulo">Agendamento</span>
-                <button class="botao modal-botao-fechar" id="fechar-modal">Fechar</button>
+                <button id="modal-botao-fechar" class="botao modal-botao-fechar" id="fechar-modal">Fechar</button>
             </div>
 
             <div class="campo-entrada">
@@ -72,8 +72,8 @@
             </div>
 
             <div class="campo-entrada">
-                <label class="label" for="ag-titulo">Assunto</label>
-                <input class="input" id="ag-titulo" type="text" name="titulo">
+                <label class="label" for="ag-assunto">Assunto</label>
+                <input class="input" id="ag-assunto" type="text" name="assunto">
             </div>
 
             <div class="campo-entrada">
@@ -82,7 +82,7 @@
             </div>
 
             <div class="modal-rodape">
-                <button class="botao botao-salvar" type="button">Salvar</button>
+                <button id="modal-botao-salvar" class="botao modal-botao-salvar" type="button">Salvar</button>
             </div>
         </div>
     </div>

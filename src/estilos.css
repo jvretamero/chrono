@@ -179,7 +179,7 @@ body {
     left: 0;
 }
 
-.modal.ativo {
+.modal.modal-ativo {
     display: flex;
 }
 
@@ -278,7 +278,7 @@ body {
     margin-top: 2rem;
 }
 
-.botao-salvar {
+.modal-botao-salvar {
     font-weight: 400;
     color: #fff;
     background-color: #5691b5;
@@ -286,7 +286,7 @@ body {
     border-radius: .25rem;
 }
 
-.botao-salvar:hover {
+.modal-botao-salvar:hover {
     background-color: #457b9d;
 }
 

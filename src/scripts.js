@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    var elRaiz = document.documentElement;
     var selectMes = document.getElementById("select-mes");
     var selectAno = document.getElementById("select-ano");
     var diasMes = document.getElementById("dias-mes");
@@ -152,4 +153,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("btn-proximo-mes").addEventListener("click", proximoMes);
     document.getElementById("btn-mes-anterior").addEventListener("click", mesAnterior);
+
+    var modalAgendamento = document.getElementById("modal-agendamento");
+
+    document.getElementById("modal-botao-fechar").addEventListener("click", fecharModal);
+    document.getElementById("modal-botao-salvar").addEventListener("click", salvarAgendamento);
+    document.getElementById("novo-agendamento").addEventListener("click", novoAgendamento);
+
+    function novoAgendamento() {
+        abrirModal();
+    }
+
+    function salvarAgendamento() {
+        fecharModal();
+    }
+
+    function abrirModal() {
+        elRaiz.classList.add("sem-scroll");
+        modalAgendamento.classList.add("modal-ativo");
+    }
+
+    function fecharModal() {
+        modalAgendamento.classList.remove("modal-ativo");
+        elRaiz.classList.remove("sem-scroll");
+    }
 });
