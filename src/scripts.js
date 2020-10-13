@@ -2,81 +2,18 @@ document.addEventListener("DOMContentLoaded", function () {
     var formatoData = new Intl.DateTimeFormat("pt-BR");
 
     var elRaiz = document.documentElement;
-    var selectMes = document.getElementById("select-mes");
-    var selectAno = document.getElementById("select-ano");
     var diasMes = document.getElementById("dias-mes");
     var dataSelecionada = document.getElementById("data-selecionada");
 
     var hoje = new Date();
     hoje.setHours(0, 0, 0, 0);
 
-    var anoAtual = hoje.getFullYear();
-    var mesAtual = hoje.getMonth();
-    var meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
     var diaSelecionado = hoje;
 
-    function proximoMes() {
-        if (mesAtual == 11) {
-            anoAtual++;
-            mesAtual = 0;
-        } else {
-            mesAtual++;
-        }
-
-        atualizarFiltros();
+    var navegacaoMes = window.navegacaoMes(function () {
         atualizarDias();
-    }
-
-    function mesAnterior() {
-        if (mesAtual == 0) {
-            anoAtual--;
-            mesAtual = 11;
-        } else {
-            mesAtual--;
-        }
-
-        atualizarFiltros();
-        atualizarDias();
-    }
-
-    function atualizarFiltros() {
-        selectMes.value = mesAtual;
-        selectAno.value = anoAtual;
-    }
-
-    function gerarMeses(selectMes) {
-        for (var indiceMes in meses) {
-            var option = document.createElement("option");
-            option.value = indiceMes;
-            option.innerText = meses[indiceMes];
-
-            if (indiceMes == mesAtual) {
-                option.setAttribute("selected", true);
-            }
-
-            selectMes.appendChild(option);
-        }
-    };
-
-    function gerarAnos(selectAno) {
-        var anos = [
-            anoAtual - 1,
-            anoAtual,
-            anoAtual + 1
-        ];
-
-        for (var ano of anos) {
-            var option = document.createElement("option");
-            option.value = ano;
-            option.innerText = ano;
-
-            if (ano == anoAtual) {
-                option.setAttribute("selected", true);
-            }
-
-            selectAno.appendChild(option);
-        }
-    };
+    });
+    navegacaoMes.iniciar(hoje);
 
     function definirDia(el) {
         if (el.classList.contains("ativo"))
@@ -110,6 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function atualizarDias() {
+        var mesAtual = navegacaoMes.obterMes();
+        var anoAtual = navegacaoMes.obterAno();
+
         diasMes.innerHTML = "";
 
         var totalDias = new Date(anoAtual, mesAtual + 1, 0).getDate();
@@ -141,23 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    gerarAnos(selectAno);
-    gerarMeses(selectMes);
-
-    selectMes.addEventListener("change", function () {
-        mesAtual = selectMes.value;
-        atualizarDias();
-    });
-
-    selectAno.addEventListener("change", function () {
-        anoAtual = selectAno.value;
-        atualizarDias();
-    });
-
     atualizarDias();
-
-    document.getElementById("btn-proximo-mes").addEventListener("click", proximoMes);
-    document.getElementById("btn-mes-anterior").addEventListener("click", mesAnterior);
 
     var modalAgendamento = document.getElementById("modal-agendamento");
 
