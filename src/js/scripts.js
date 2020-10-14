@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     var formatoData = new Intl.DateTimeFormat("pt-BR");
 
-    var elRaiz = document.documentElement;
     var dataSelecionada = document.getElementById("data-selecionada");
 
     var hoje = new Date();
@@ -20,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     navegacaoMes.iniciar(hoje);
 
-    var modalAgendamento = document.getElementById("modal-agendamento");
+    var modal = window.modal();
 
     var elAgendamento = {
         data: document.getElementById("ag-data"),
@@ -33,31 +32,19 @@ document.addEventListener("DOMContentLoaded", function () {
         notas: document.getElementById("ag-notas")
     };
 
-    document.getElementById("modal-botao-fechar").addEventListener("click", fecharModal);
-    document.getElementById("modal-fundo").addEventListener("click", fecharModal);
-    document.getElementById("modal-botao-salvar").addEventListener("click", salvarAgendamento);
-    document.getElementById("novo-agendamento").addEventListener("click", novoAgendamento);
-
     function novoAgendamento() {
         elAgendamento.data.valueAsNumber = diaSelecionado.getTime();
-        abrirModal();
+        modal.abrir();
     }
 
     function salvarAgendamento() {
-        fecharModal();
-    }
-
-    function abrirModal() {
-        elRaiz.classList.add("sem-scroll");
-        modalAgendamento.classList.add("modal-ativo");
-    }
-
-    function fecharModal() {
-        modalAgendamento.classList.remove("modal-ativo");
-        elRaiz.classList.remove("sem-scroll");
+        modal.fechar();
     }
 
     function atualizarAgendamentos() {
         dataSelecionada.innerText = formatoData.format(diaSelecionado);
     }
+
+    document.getElementById("modal-botao-salvar").addEventListener("click", salvarAgendamento);
+    document.getElementById("novo-agendamento").addEventListener("click", novoAgendamento);
 });
