@@ -1,4 +1,11 @@
-document.addEventListener("DOMContentLoaded", function () {
+var ready = function (fn) {
+    if (document.readyState === 'complete')
+        return fn();
+
+    document.addEventListener('DOMContentLoaded', fn, false);
+};
+
+ready(function () {
     var formatoData = new Intl.DateTimeFormat("pt-BR", { dateStyle: "short" });
     var formatoHora = new Intl.DateTimeFormat("pt-BR", { timeStyle: "short" });
 
