@@ -287,6 +287,10 @@ body {
     outline: none;
 }
 
+.input:invalid {
+    border-color: tomato;
+}
+
 .modal-rodape {
     display: flex;
     flex-direction: row;

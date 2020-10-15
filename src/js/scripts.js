@@ -23,6 +23,7 @@ ready(function () {
     var modal = window.modal();
 
     var elAgendamento = {
+        form: document.getElementById("ag-form"),
         data: document.getElementById("ag-data"),
         hora: {
             inicial: document.getElementById("ag-hora-inicial"),
@@ -54,6 +55,13 @@ ready(function () {
         dataSelecionada.innerText = formatoData.format(dia);
     }
 
-    document.getElementById("modal-botao-salvar").addEventListener("click", salvarAgendamento);
+    elAgendamento.form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        //TODO validar campos
+
+        salvarAgendamento();
+    });
+
     document.getElementById("novo-agendamento").addEventListener("click", novoAgendamento);
 });
