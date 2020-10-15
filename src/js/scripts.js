@@ -1,22 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var formatoData = new Intl.DateTimeFormat("pt-BR");
+    var formatoData = new Intl.DateTimeFormat("pt-BR", { dateStyle: "short" });
+    var formatoHora = new Intl.DateTimeFormat("pt-BR", { timeStyle: "short" });
 
     var dataSelecionada = document.getElementById("data-selecionada");
 
     var hoje = new Date();
     hoje.setHours(0, 0, 0, 0);
 
-    var diaSelecionado = hoje;
-
-    var calendario = window.calendario(function (dia) {
-        diaSelecionado = dia;
-        atualizarAgendamentos();
-    });
+    var calendario = window.calendario(atualizarAgendamentos);
     calendario.iniciar(hoje);
 
-    var navegacaoMes = window.navegacaoMes(function (mes, ano) {
-        calendario.atualizarMes(mes, ano);
-    });
+    var navegacaoMes = window.navegacaoMes(calendario.atualizarMes);
     navegacaoMes.iniciar(hoje);
 
     var modal = window.modal();
@@ -33,16 +27,24 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     function novoAgendamento() {
-        elAgendamento.data.valueAsNumber = diaSelecionado.getTime();
+        var horaInicial = new Date();
+        var horaFinal = new Date(horaInicial.getTime() + (60 * 60 * 1000));
+
+        elAgendamento.data.valueAsNumber = calendario.obetDiaSelecionado().getTime();
+        elAgendamento.hora.inicial.value = formatoHora.format(horaInicial);
+        elAgendamento.hora.final.value = formatoHora.format(horaFinal);
+
         modal.abrir();
+
+        elAgendamento.assunto.focus();
     }
 
     function salvarAgendamento() {
         modal.fechar();
     }
 
-    function atualizarAgendamentos() {
-        dataSelecionada.innerText = formatoData.format(diaSelecionado);
+    function atualizarAgendamentos(dia) {
+        dataSelecionada.innerText = formatoData.format(dia);
     }
 
     document.getElementById("modal-botao-salvar").addEventListener("click", salvarAgendamento);
