@@ -10,6 +10,7 @@ ready(function () {
     var formatoHora = new Intl.DateTimeFormat("pt-BR", { timeStyle: "short" });
 
     var dataSelecionada = document.getElementById("data-selecionada");
+    var listaAgendamentos = document.getElementById("lista-agendamentos");
 
     var hoje = new Date();
     hoje.setHours(0, 0, 0, 0);
@@ -34,6 +35,35 @@ ready(function () {
         assunto: document.getElementById("ag-assunto"),
         categoria: document.getElementById("ag-categoria"),
         notas: document.getElementById("ag-notas")
+    };
+
+    function listarAgendamentos() {
+        var agendamentos = persistencia.obterAgendamentos();
+
+        for (var agendamento of agendamentos) {
+            var li = document.createElement("li");
+            li.classList.add("agendamento");
+
+            var divHorario = document.createElement("div");
+
+            var spanHorarioInicio = document.createElement("span");
+            spanHorarioInicio.classList.add("horario-inicio");
+            spanHorarioInicio.innerText = agendamento.hora.inicial;
+            divHorario.append(spanHorarioInicio);
+
+            var spanHorarioFim = document.createElement("span");
+            spanHorarioFim.classList.add("horario-fim");
+            spanHorarioFim.innerText = agendamento.hora.final;
+            divHorario.append(spanHorarioFim);
+
+            li.append(divHorario);
+
+            var divDados = document.createElement("div");
+
+            li.append(divDados);
+
+            listaAgendamentos.append(li);
+        }
     };
 
     function novoAgendamento() {
@@ -68,6 +98,8 @@ ready(function () {
 
     function atualizarAgendamentos(dia) {
         dataSelecionada.innerText = formatoData.format(dia);
+
+        listarAgendamentos();
     }
 
     elAgendamento.form.addEventListener("submit", function (e) {
