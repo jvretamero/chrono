@@ -3,7 +3,7 @@ window.calendario = function (callback) {
     var diasMes = document.getElementById("dias-mes");
     var diaSelecionado = null;
 
-    var obetDiaSelecionado = function () {
+    var obterDiaSelecionado = function () {
         return diaSelecionado;
     };
 
@@ -80,6 +80,6 @@ window.calendario = function (callback) {
     return {
         iniciar: iniciar,
         atualizarMes: atualizarMes,
-        obetDiaSelecionado: obetDiaSelecionado
+        obterDiaSelecionado: obterDiaSelecionado
     };
 };

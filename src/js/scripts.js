@@ -38,7 +38,7 @@ ready(function () {
         var horaInicial = new Date();
         var horaFinal = new Date(horaInicial.getTime() + (60 * 60 * 1000));
 
-        elAgendamento.data.valueAsNumber = calendario.obetDiaSelecionado().getTime();
+        elAgendamento.data.valueAsNumber = calendario.obterDiaSelecionado().getTime();
         elAgendamento.hora.inicial.value = formatoHora.format(horaInicial);
         elAgendamento.hora.final.value = formatoHora.format(horaFinal);
 
