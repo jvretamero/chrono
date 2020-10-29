@@ -14,6 +14,8 @@ ready(function () {
     var hoje = new Date();
     hoje.setHours(0, 0, 0, 0);
 
+    var persistencia = window.persistencia();
+
     var calendario = window.calendario(atualizarAgendamentos);
     calendario.iniciar(hoje);
 
@@ -48,6 +50,19 @@ ready(function () {
     }
 
     function salvarAgendamento() {
+        var agendamento = {
+            data: elAgendamento.data.valueAsNumber,
+            hora: {
+                inicial: elAgendamento.hora.inicial.valueAsNumber,
+                final: elAgendamento.hora.final.valueAsNumber
+            },
+            assunto: elAgendamento.assunto.value,
+            categoria: elAgendamento.categoria.value,
+            notas: elAgendamento.notas.value
+        };
+
+        persistencia.salvarAgendamento(agendamento);
+
         modal.fechar();
     }
 
