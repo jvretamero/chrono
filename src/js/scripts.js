@@ -38,34 +38,51 @@ ready(function () {
         notas: document.getElementById("ag-notas")
     };
 
+    function criarElementoAgendamento(agendamento) {
+        var li = document.createElement("li");
+        li.classList.add("agendamento");
+
+        var divHorario = document.createElement("div");
+        divHorario.classList.add("agendamento-horario");
+
+        var spanHorarioInicio = document.createElement("span");
+        spanHorarioInicio.classList.add("horario-inicio");
+        spanHorarioInicio.innerText = agendamento.hora.inicial;
+        divHorario.append(spanHorarioInicio);
+
+        var spanHorarioFim = document.createElement("span");
+        spanHorarioFim.classList.add("horario-termino");
+        spanHorarioFim.innerText = agendamento.hora.final;
+        divHorario.append(spanHorarioFim);
+
+        li.append(divHorario);
+
+        var divDados = document.createElement("div");
+        divDados.classList.add("agendamento-dados");
+
+        var spanCategoria = document.createElement("span");
+        spanCategoria.classList.add("categoria");
+        spanCategoria.innerText = agendamento.categoria;
+        divDados.append(spanCategoria);
+
+        var spanAssunto = document.createElement("span");
+        spanAssunto.classList.add("titulo");
+        spanAssunto.innerText = agendamento.assunto;
+        divDados.append(spanAssunto);
+
+        li.append(divDados);
+
+        return li;
+    }
+
     function listarAgendamentos() {
         var agendamentos = persistencia.obterAgendamentos();
 
         for (var agendamento of agendamentos) {
-            var li = document.createElement("li");
-            li.classList.add("agendamento");
-
-            var divHorario = document.createElement("div");
-
-            var spanHorarioInicio = document.createElement("span");
-            spanHorarioInicio.classList.add("horario-inicio");
-            spanHorarioInicio.innerText = agendamento.hora.inicial;
-            divHorario.append(spanHorarioInicio);
-
-            var spanHorarioFim = document.createElement("span");
-            spanHorarioFim.classList.add("horario-fim");
-            spanHorarioFim.innerText = agendamento.hora.final;
-            divHorario.append(spanHorarioFim);
-
-            li.append(divHorario);
-
-            var divDados = document.createElement("div");
-
-            li.append(divDados);
-
+            var li = criarElementoAgendamento(agendamento);
             listaAgendamentos.append(li);
         }
-    };
+    }
 
     function novoAgendamento() {
         var horaInicial = new Date();
@@ -80,7 +97,7 @@ ready(function () {
         elAgendamento.assunto.focus();
     }
 
-    var agendamentoParaObjeto = function () {
+    function agendamentoParaObjeto() {
         return {
             data: elAgendamento.data.valueAsNumber,
             hora: {
@@ -91,14 +108,12 @@ ready(function () {
             categoria: elAgendamento.categoria.value,
             notas: elAgendamento.notas.value
         };
-    };
+    }
 
     function salvarAgendamento(agendamento) {
         persistencia.salvarAgendamento(agendamento);
 
         modal.fechar();
-
-        elAgendamento.form.reset();
     }
 
     function atualizarAgendamentos(dia) {
@@ -118,6 +133,10 @@ ready(function () {
         }
 
         salvarAgendamento(objAgendamento);
+
+        elAgendamento.form.reset();
+
+        listarAgendamentos();
     });
 
     document.getElementById("novo-agendamento").addEventListener("click", novoAgendamento);
