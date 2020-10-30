@@ -97,6 +97,8 @@ ready(function () {
         persistencia.salvarAgendamento(agendamento);
 
         modal.fechar();
+
+        elAgendamento.form.reset();
     }
 
     function atualizarAgendamentos(dia) {
