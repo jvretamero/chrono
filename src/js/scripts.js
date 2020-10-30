@@ -9,6 +9,7 @@ ready(function () {
     var formatoData = new Intl.DateTimeFormat("pt-BR", { dateStyle: "short" });
     var formatoHora = new Intl.DateTimeFormat("pt-BR", { timeStyle: "short" });
 
+
     var dataSelecionada = document.getElementById("data-selecionada");
     var listaAgendamentos = document.getElementById("lista-agendamentos");
 
@@ -79,18 +80,20 @@ ready(function () {
         elAgendamento.assunto.focus();
     }
 
-    function salvarAgendamento() {
-        var agendamento = {
+    var agendamentoParaObjeto = function () {
+        return {
             data: elAgendamento.data.valueAsNumber,
             hora: {
-                inicial: elAgendamento.hora.inicial.valueAsNumber,
-                final: elAgendamento.hora.final.valueAsNumber
+                inicial: elAgendamento.hora.inicial.value,
+                final: elAgendamento.hora.final.value
             },
             assunto: elAgendamento.assunto.value,
             categoria: elAgendamento.categoria.value,
             notas: elAgendamento.notas.value
         };
+    };
 
+    function salvarAgendamento(agendamento) {
         persistencia.salvarAgendamento(agendamento);
 
         modal.fechar();
@@ -105,9 +108,14 @@ ready(function () {
     elAgendamento.form.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        //TODO validar campos
+        var objAgendamento = agendamentoParaObjeto();
+        var validacoes = window.validarAgendamento(objAgendamento);
 
-        salvarAgendamento();
+        if (validacoes.length) {
+            return alert("Inválido");
+        }
+
+        salvarAgendamento(objAgendamento);
     });
 
     document.getElementById("novo-agendamento").addEventListener("click", novoAgendamento);
