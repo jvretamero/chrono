@@ -1,3 +1,7 @@
+import "../css/estilos.css";
+
+//TODO importar demais scripts
+
 var ready = function (fn) {
     if (document.readyState === 'complete')
         return fn();

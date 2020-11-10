@@ -2,14 +2,22 @@
     "name": "chrono",
     "version": "1.0.0",
     "description": "Calendário Vanilla",
-    "main": "index.js",
+    "private": true,
     "scripts": {
-        "serve": "serve src"
+        "serve": "serve dist",
+        "build": "webpack"
     },
     "keywords": [],
     "author": "João Vitor Retamero",
     "license": "MIT",
     "devDependencies": {
-        "serve": "^11.3.2"
+        "clean-webpack-plugin": "^3.0.0",
+        "css-loader": "^5.0.1",
+        "html-webpack-plugin": "^5.0.0-alpha.14",
+        "mini-css-extract-plugin": "^1.3.0",
+        "serve": "^11.3.2",
+        "style-loader": "^2.0.0",
+        "webpack": "^5.4.0",
+        "webpack-cli": "^4.2.0"
     }
 }
