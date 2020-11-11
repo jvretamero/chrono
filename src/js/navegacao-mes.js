@@ -1,4 +1,4 @@
-window.navegacaoMes = function (callback) {
+export default function (callback) {
 
     var selectMes = document.getElementById("select-mes");
     var selectAno = document.getElementById("select-ano");

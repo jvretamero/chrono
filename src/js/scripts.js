@@ -1,18 +1,15 @@
 import "../css/estilos.css";
 
-//TODO importar demais scripts
-
-var ready = function (fn) {
-    if (document.readyState === 'complete')
-        return fn();
-
-    document.addEventListener('DOMContentLoaded', fn, false);
-};
+import { ready } from "./utils";
+import { validarAgendamento } from "./agendamento";
+import criarPersistencia from "./persistencia";
+import criarModal from "./modal";
+import criarNavegacaoMes from "./navegacao-mes";
+import criarCalendario from "./calendario";
 
 ready(function () {
     var formatoData = new Intl.DateTimeFormat("pt-BR", { dateStyle: "short" });
     var formatoHora = new Intl.DateTimeFormat("pt-BR", { timeStyle: "short" });
-
 
     var dataSelecionada = document.getElementById("data-selecionada");
     var listaAgendamentos = document.getElementById("lista-agendamentos");
@@ -20,15 +17,15 @@ ready(function () {
     var hoje = new Date();
     hoje.setHours(0, 0, 0, 0);
 
-    var persistencia = window.persistencia();
+    var persistencia = criarPersistencia();
 
-    var calendario = window.calendario(atualizarAgendamentos);
+    var calendario = criarCalendario(atualizarAgendamentos);
     calendario.iniciar(hoje);
 
-    var navegacaoMes = window.navegacaoMes(calendario.atualizarMes);
+    var navegacaoMes = criarNavegacaoMes(calendario.atualizarMes);
     navegacaoMes.iniciar(hoje);
 
-    var modal = window.modal();
+    var modal = criarModal();
 
     var elAgendamento = {
         form: document.getElementById("ag-form"),
@@ -115,7 +112,7 @@ ready(function () {
     }
 
     function salvarAgendamento(agendamento) {
-        persistencia.salvarAgendamento(agendamento);
+        persistencia.persistirAgendamento(agendamento);
 
         modal.fechar();
     }
@@ -130,7 +127,7 @@ ready(function () {
         e.preventDefault();
 
         var objAgendamento = agendamentoParaObjeto();
-        var validacoes = window.validarAgendamento(objAgendamento);
+        var validacoes = validarAgendamento(objAgendamento);
 
         if (validacoes.length) {
             return alert("Inválido");

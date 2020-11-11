@@ -1,31 +1,29 @@
-window.persistencia = function () {
-    var chaveAgendamentos = "agendamentos";
-    var storage = window.sessionStorage;
+import { gerarId } from "./utils";
 
-    var gerarId = function () {
-        return '_' + Math.random().toString(36).substr(2, 9);
+export default function () {
+    const CHAVE_AGENDAMENTOS = "agendamentos";
+    const storage = window.sessionStorage;
+
+    const persistirAgendamentos = function (agendamentos) {
+        storage.setItem(CHAVE_AGENDAMENTOS, JSON.stringify(agendamentos));
     };
 
-    var obterAgendamentos = function () {
-        var agendamentosStr = storage.getItem(chaveAgendamentos);
+    const obterAgendamentos = function () {
+        var agendamentosStr = storage.getItem(CHAVE_AGENDAMENTOS);
         return agendamentosStr ? JSON.parse(agendamentosStr) : [];
     };
 
-    var salvarAgendamentos = function (agendamentos) {
-        storage.setItem(chaveAgendamentos, JSON.stringify(agendamentos));
-    };
-
-    var salvarAgendamento = function (agendamento) {
+    const persistirAgendamento = function (agendamento) {
         agendamento.id = gerarId();
 
         var agendamentos = obterAgendamentos();
         agendamentos.push(agendamento);
 
-        salvarAgendamentos(agendamentos);
+        persistirAgendamentos(agendamentos);
     };
 
     return {
-        obterAgendamentos: obterAgendamentos,
-        salvarAgendamento: salvarAgendamento
+        obterAgendamentos,
+        persistirAgendamento
     };
 };

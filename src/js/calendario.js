@@ -1,4 +1,4 @@
-window.calendario = function (callback) {
+export default function (callback) {
 
     var diasMes = document.getElementById("dias-mes");
     var diaSelecionado = null;

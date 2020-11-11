@@ -1,4 +1,4 @@
-window.modal = function () {
+export default function () {
     var elRaiz = document.documentElement;
     var modalAgendamento = document.getElementById("modal-agendamento");
 
