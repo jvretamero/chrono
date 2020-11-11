@@ -11,6 +11,9 @@ module.exports = {
         filename: "scripts.js",
         path: path.resolve(__dirname, "dist")
     },
+    devServer: {
+        contentBase: "./dist"
+    },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
