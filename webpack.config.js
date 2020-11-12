@@ -15,11 +15,6 @@ module.exports = {
     devServer: {
         contentBase: "./dist"
     },
-    resolve: {
-        alias: {
-            "@": path.resolve(__dirname, "src")
-        }
-    },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
