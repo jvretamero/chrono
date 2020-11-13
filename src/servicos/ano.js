@@ -1,11 +1,5 @@
-const hoje = new Date();
-
-export const obterAnoAtual = function () {
-    return hoje.getFullYear();
-};
-
 export const obterAnos = function () {
-    var anoAtual = obterAnoAtual();
+    var anoAtual = new Date().getFullYear();
 
     return [
         anoAtual - 1,
