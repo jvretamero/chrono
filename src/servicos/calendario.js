@@ -9,7 +9,7 @@ export const anoAtual = function () {
 };
 
 export const obterAnos = function () {
-    var ano = anoAtual();
+    const ano = anoAtual();
 
     return [
         ano - 1,
@@ -46,4 +46,44 @@ export const calcularMesAnterior = function (mes, ano) {
     }
 
     return { mes, ano };
+};
+
+export const calcularDias = function (mes, ano) {
+    const totalDias = new Date(ano, mes + 1, 0).getDate();
+    const primeiroDia = new Date(ano, mes);
+    const didSemanaInicial = primeiroDia.getDay();
+    const semanas = [];
+
+    let dia = 1;
+
+    for (let semana = 0; semana < 6; semana++) {
+        const diasSemana = [];
+
+        for (let diaSemana = 0; diaSemana < 7; diaSemana++) {
+            let naoComecouMes = semana == 0 && diaSemana < didSemanaInicial;
+            let terminouMes = dia > totalDias;
+
+            if (naoComecouMes || terminouMes) {
+                diasSemana.push(_criarDiaMes());
+            } else {
+                diasSemana.push(_criarDiaMes(ano, mes, dia));
+                dia++;
+            }
+        }
+
+        semanas.push(diasSemana);
+    }
+
+    return semanas;
+};
+
+const _criarDiaMes = function (ano, mes, dia) {
+    let diaMes = {};
+
+    if (ano != null && mes != null && dia != null) {
+        diaMes.numero = dia;
+        diaMes.data = new Date(ano, mes, dia);
+    }
+
+    return diaMes;
 };

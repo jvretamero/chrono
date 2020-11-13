@@ -2,20 +2,7 @@
     <div class="container">
         <div class="calendario">
             <CalendarioNav @change="anoMesModificado" />
-
-            <table class="table-mes">
-                <thead>
-                    <th>Dom</th>
-                    <th>Seg</th>
-                    <th>Ter</th>
-                    <th>Qua</th>
-                    <th>Qui</th>
-                    <th>Sex</th>
-                    <th>Sab</th>
-                </thead>
-
-                <tbody id="dias-mes"></tbody>
-            </table>
+            <DiasCalendario :mes="mesAtual" :ano="anoAtual" />
         </div>
 
         <div class="agendamentos">
@@ -46,14 +33,23 @@
 
 <script>
 import CalendarioNav from "../componentes/CalendarioNav.vue";
+import DiasCalendario from "../componentes/DiasCalendario.vue";
 
 export default {
     components: {
         CalendarioNav,
+        DiasCalendario,
+    },
+    data() {
+        return {
+            mesAtual: null,
+            anoAtual: null,
+        };
     },
     methods: {
         anoMesModificado(e) {
-            console.log(e);
+            this.mesAtual = e.mes;
+            this.anoAtual = e.ano;
         },
     },
 };

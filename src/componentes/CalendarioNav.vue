@@ -63,6 +63,8 @@ export default {
 
             this.mesSelecionado = mes;
             this.anoSelecionado = ano;
+
+            this.notificar();
         },
         mesAnterior() {
             let { mes, ano } = calcularMesAnterior(
@@ -72,7 +74,12 @@ export default {
 
             this.mesSelecionado = mes;
             this.anoSelecionado = ano;
+
+            this.notificar();
         },
+    },
+    mounted() {
+        this.notificar();
     },
 };
 </script>
