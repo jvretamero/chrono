@@ -22,16 +22,20 @@
 </template>
 
 <script>
-import { obterMeses, obterProximoMes, obterMesAnterior } from "../servicos/mes";
-import { obterAnos } from "../servicos/ano";
+import {
+    mesAtual,
+    anoAtual,
+    obterMeses,
+    obterAnos,
+    calcularProximoMes,
+    calcularMesAnterior,
+} from "../servicos/calendario";
 
 export default {
     data() {
-        let hoje = new Date();
-
         return {
-            mesSelecionado: hoje.getMonth(),
-            anoSelecionado: hoje.getFullYear(),
+            mesSelecionado: mesAtual(),
+            anoSelecionado: anoAtual(),
         };
     },
     computed: {
@@ -52,7 +56,7 @@ export default {
             this.$emit("change", args);
         },
         proximoMes() {
-            let { mes, ano } = obterProximoMes(
+            let { mes, ano } = calcularProximoMes(
                 this.mesSelecionado,
                 this.anoSelecionado
             );
@@ -61,7 +65,7 @@ export default {
             this.anoSelecionado = ano;
         },
         mesAnterior() {
-            let { mes, ano } = obterMesAnterior(
+            let { mes, ano } = calcularMesAnterior(
                 this.mesSelecionado,
                 this.anoSelecionado
             );
