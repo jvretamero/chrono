@@ -2,7 +2,11 @@
     <div class="container">
         <div class="calendario">
             <CalendarioNav @change="anoMesModificado" />
-            <DiasCalendario :mes="mesAtual" :ano="anoAtual" />
+            <DiasCalendario
+                :mes="mesAtual"
+                :ano="anoAtual"
+                @change="dataModificada"
+            />
         </div>
 
         <div class="agendamentos">
@@ -42,6 +46,7 @@ export default {
     },
     data() {
         return {
+            dataAtual: null,
             mesAtual: null,
             anoAtual: null,
         };
@@ -50,6 +55,9 @@ export default {
         anoMesModificado(e) {
             this.mesAtual = e.mes;
             this.anoAtual = e.ano;
+        },
+        dataModificada(e) {
+            console.log(e);
         },
     },
 };
