@@ -44,6 +44,7 @@ import ModalAgendamento from "./ModalAgendamento.vue";
 import CabecalhoAgendamentos from "./CabecalhoAgendamentos.vue";
 
 import { obterAgendamentos } from "../servicos/persistencia";
+import { novoAgendamento } from "../servicos/agendamento";
 
 export default {
     components: {
@@ -76,7 +77,7 @@ export default {
             this.agendamentos = obterAgendamentos();
         },
         abrirModalNovoAgendamento() {
-            this.agendamentoSelecionado = null;
+            this.agendamentoSelecionado = novoAgendamento(this.dataAtual);
             this.exibirModal = true;
         },
         fecharModal() {

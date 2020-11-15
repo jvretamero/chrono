@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { formatarData } from "../servicos/utils";
+import { formatarData } from "../servicos/dataHora";
 
 export default {
     props: ["dataAtual"],
