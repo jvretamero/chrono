@@ -11,10 +11,10 @@
             </div>
 
             <div class="agendamentos">
-                <div class="agendamentos-cabecalho">
-                    <span class="data-selecionada">{{ dataFormatada }}</span>
-                    <button type="button" class="botao">+</button>
-                </div>
+                <CabecalhoAgendamentos
+                    :dataAtual="dataAtual"
+                    @novo-agendamento="abrirModalNovoAgendamento"
+                />
 
                 <div class="agendamentos-itens">
                     <ul>
@@ -29,8 +29,9 @@
         </div>
 
         <ModalAgendamento
-            v-if="exibirModal"
+            :exibir="exibirModal"
             :agendamento="agendamentoSelecionado"
+            @fechar="fecharModal"
         />
     </div>
 </template>
@@ -40,9 +41,9 @@ import CalendarioNav from "../componentes/CalendarioNav.vue";
 import DiasCalendario from "../componentes/DiasCalendario.vue";
 import ItemAgendamento from "../componentes/ItemAgendamento.vue";
 import ModalAgendamento from "./ModalAgendamento.vue";
+import CabecalhoAgendamentos from "./CabecalhoAgendamentos.vue";
 
 import { obterAgendamentos } from "../servicos/persistencia";
-import { formatarData } from "../servicos/utils";
 
 export default {
     components: {
@@ -50,6 +51,7 @@ export default {
         DiasCalendario,
         ItemAgendamento,
         ModalAgendamento,
+        CabecalhoAgendamentos,
     },
     data() {
         return {
@@ -60,11 +62,6 @@ export default {
             exibirModal: false,
             agendamentos: [],
         };
-    },
-    computed: {
-        dataFormatada() {
-            return formatarData(this.dataAtual);
-        },
     },
     methods: {
         anoMesModificado(e) {
@@ -77,6 +74,14 @@ export default {
         },
         listarAgendamentos() {
             this.agendamentos = obterAgendamentos();
+        },
+        abrirModalNovoAgendamento() {
+            this.agendamentoSelecionado = null;
+            this.exibirModal = true;
+        },
+        fecharModal() {
+            this.agendamentoSelecionado = null;
+            this.exibirModal = false;
         },
     },
 };

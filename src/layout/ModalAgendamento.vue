@@ -1,13 +1,13 @@
 <template>
-    <div id="modal-agendamento" class="modal">
-        <div id="modal-fundo" class="modal-fundo"></div>
+    <div :class="{ modal: 1, 'modal-ativo': exibir }" v-if="exibir">
+        <div class="modal-fundo" @click="notificarFechar"></div>
         <div class="modal-conteudo">
             <form id="ag-form">
                 <div class="modal-cabecalho">
                     <span class="modal-titulo">Agendamento</span>
                     <button
-                        id="modal-botao-fechar"
                         class="botao modal-botao-fechar"
+                        @click="notificarFechar"
                     >
                         Fechar
                     </button>
@@ -98,7 +98,20 @@
 </template>
 
 <script>
+import { habilitarScroll, desabilitarScroll } from "../servicos/modal";
+
 export default {
-    props: ["agendamento"],
+    props: ["exibir", "agendamento"],
+    watch: {
+        exibir(novoExibir) {
+            if (novoExibir) desabilitarScroll();
+            else habilitarScroll();
+        },
+    },
+    methods: {
+        notificarFechar() {
+            this.$emit("fechar");
+        },
+    },
 };
 </script>
