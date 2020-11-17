@@ -11,7 +11,8 @@ export const novoAgendamento = function (data) {
         hora: {
             inicial: formatarHora(horaInicial),
             final: formatarHora(horaFinal)
-        }
+        },
+        titulo: ""
     };
 };
 
