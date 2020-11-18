@@ -2,7 +2,7 @@
     <div :class="{ modal: 1, 'modal-ativo': exibir }" v-if="exibir">
         <div class="modal-fundo" @click="notificarFechar"></div>
         <div class="modal-conteudo">
-            <form>
+            <form @submit.prevent="salvarAgendamento">
                 <div class="modal-cabecalho">
                     <span class="modal-titulo">Agendamento</span>
                     <button
@@ -60,6 +60,7 @@
                         v-model="agendamento.assunto"
                         class="input"
                         type="text"
+                        ref="assunto"
                         name="assunto"
                         required
                     />
@@ -100,9 +101,16 @@
 <script>
 import { formatarDataParaInput, inputParaData } from "../servicos/dataHora";
 import { habilitarScroll, desabilitarScroll } from "../servicos/modal";
+import { validarAgendamento } from "../servicos/agendamento";
+import { persistirAgendamento } from "../servicos/persistencia";
 
 export default {
     props: ["exibir", "agendamento"],
+    data() {
+        return {
+            erros: [],
+        };
+    },
     computed: {
         data: {
             get() {
@@ -115,13 +123,29 @@ export default {
     },
     watch: {
         exibir(novoExibir) {
-            if (novoExibir) desabilitarScroll();
-            else habilitarScroll();
+            if (novoExibir) {
+                desabilitarScroll();
+                this.$nextTick(function () {
+                    this.$refs.assunto.focus();
+                });
+            } else {
+                habilitarScroll();
+            }
         },
     },
     methods: {
         notificarFechar() {
             this.$emit("fechar");
+        },
+        salvarAgendamento() {
+            this.erros = validarAgendamento(this.agendamento);
+
+            if (this.erros.length > 0) {
+                return alert("Inválido"); //TODO melhorar exibição de erros
+            }
+
+            persistirAgendamento(this.agendamento);
+            this.notificarFechar();
         },
     },
 };
