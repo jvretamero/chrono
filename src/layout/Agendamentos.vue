@@ -22,6 +22,7 @@
                             v-for="(agendamento, indice) in agendamentos"
                             :key="indice"
                             :agendamento="agendamento"
+                            @click="onAgendamentoSelecionado"
                         />
                     </ul>
                 </div>
@@ -77,8 +78,16 @@ export default {
             this.agendamentos = obterAgendamentos();
         },
         abrirModalNovoAgendamento() {
-            this.agendamentoSelecionado = novoAgendamento(this.dataAtual);
+            const novoAg = novoAgendamento(this.dataAtual);
+            this._abrirModalAgendamento(novoAg);
+        },
+        _abrirModalAgendamento(agendamento) {
+            this.agendamentoSelecionado = agendamento;
             this.exibirModal = true;
+        },
+        onAgendamentoSelecionado(agendamento) {
+            agendamento.data = new Date(agendamento.data);
+            this._abrirModalAgendamento(agendamento);
         },
         fecharModal() {
             this.agendamentoSelecionado = null;

@@ -1,5 +1,5 @@
 <template>
-    <li class="agendamento">
+    <li class="agendamento" @click="notificarAgendamentoSelecionado">
         <div class="agendamento-horario">
             <span class="horario-inicio">{{ agendamento.hora.inicial }}</span>
             <span class="horario-termino">{{ agendamento.hora.final }}</span>
@@ -14,5 +14,10 @@
 <script>
 export default {
     props: ["agendamento"],
+    methods: {
+        notificarAgendamentoSelecionado() {
+            this.$emit("click", this.agendamento);
+        },
+    },
 };
 </script>

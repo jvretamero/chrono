@@ -8,6 +8,7 @@ const persistirAgendamentos = function (agendamentos) {
 };
 
 export const obterAgendamentos = function () {
+    //TODO tratar data que é armazenada como string
     var agendamentosStr = storage.getItem(CHAVE_AGENDAMENTOS);
     return agendamentosStr ? JSON.parse(agendamentosStr) : [];
 };

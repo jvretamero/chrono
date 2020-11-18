@@ -144,6 +144,7 @@ export default {
                 return alert("Inválido"); //TODO melhorar exibição de erros
             }
 
+            //TODO atualizar ou salvar novo agendamento
             persistirAgendamento(this.agendamento);
             this.notificarFechar();
         },
