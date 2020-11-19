@@ -75,7 +75,7 @@ export default {
             this.listarAgendamentos();
         },
         listarAgendamentos() {
-            this.agendamentos = obterAgendamentos();
+            this.agendamentos = obterAgendamentos(this.dataAtual);
         },
         abrirModalNovoAgendamento() {
             const novoAg = novoAgendamento(this.dataAtual);
@@ -89,9 +89,11 @@ export default {
             const clone = clonarAgendamento(agendamento);
             this._abrirModalAgendamento(clone);
         },
-        fecharModal() {
+        fecharModal(houveModificacao) {
             this.agendamentoSelecionado = null;
             this.exibirModal = false;
+
+            if (houveModificacao) this.listarAgendamentos();
         },
     },
 };

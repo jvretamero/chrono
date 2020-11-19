@@ -1,6 +1,6 @@
 <template>
     <div :class="{ modal: 1, 'modal-ativo': exibir }" v-if="exibir">
-        <div class="modal-fundo" @click="notificarFechar"></div>
+        <div class="modal-fundo" @click="notificarFechar()"></div>
         <div class="modal-conteudo">
             <form @submit.prevent="salvarAgendamento">
                 <div class="modal-cabecalho">
@@ -134,8 +134,8 @@ export default {
         },
     },
     methods: {
-        notificarFechar() {
-            this.$emit("fechar");
+        notificarFechar(houveModificacao) {
+            this.$emit("fechar", houveModificacao || false);
         },
         salvarAgendamento() {
             this.erros = validarAgendamento(this.agendamento);
@@ -145,7 +145,7 @@ export default {
             }
 
             persistirAgendamento(this.agendamento);
-            this.notificarFechar();
+            this.notificarFechar(true);
         },
     },
 };

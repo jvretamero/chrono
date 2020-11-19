@@ -24,4 +24,13 @@ export const formatarData = function (data) {
 
 export const formatarHora = function (data) {
     return formatoHora.format(data);
-}
+};
+
+export const datasIguais = function (data1, data2) {
+    if (!data1 || !data2)
+        return false;
+
+    return data1.getFullYear() == data2.getFullYear()
+        && data1.getMonth() == data2.getMonth()
+        && data1.getDate() == data2.getDate();
+};

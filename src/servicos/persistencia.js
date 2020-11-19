@@ -1,5 +1,6 @@
 import { ajustarData } from "./agendamento";
 import { gerarId } from "./utils";
+import { datasIguais } from "./dataHora";
 
 const CHAVE_AGENDAMENTOS = "agendamentos";
 const storage = window.sessionStorage;
@@ -9,7 +10,7 @@ const persistirAgendamentos = function () {
     storage.setItem(CHAVE_AGENDAMENTOS, JSON.stringify(listaAgendamento));
 };
 
-export const obterAgendamentos = function () {
+export const obterAgendamentos = function (data) {
     if (listaAgendamento == null) {
         const agendamentosStr = storage.getItem(CHAVE_AGENDAMENTOS);
         const agendamentos = agendamentosStr ? JSON.parse(agendamentosStr) : {};
@@ -24,7 +25,18 @@ export const obterAgendamentos = function () {
         }
     }
 
-    return listaAgendamento;
+    const agendamentosRetorno = {};
+
+    if (data) {
+        for (let id in listaAgendamento) {
+            const agendamento = listaAgendamento[id];
+
+            if (datasIguais(data, agendamento.data))
+                agendamentosRetorno[id] = agendamento;
+        }
+    }
+
+    return agendamentosRetorno;
 };
 
 export const persistirAgendamento = function (agendamento) {
