@@ -44,7 +44,7 @@ import ItemAgendamento from "../componentes/ItemAgendamento.vue";
 import ModalAgendamento from "./ModalAgendamento.vue";
 import CabecalhoAgendamentos from "./CabecalhoAgendamentos.vue";
 
-import { obterAgendamentos } from "../servicos/persistencia";
+import { obterAgendamentos, clonarAgendamento } from "../servicos/persistencia";
 import { novoAgendamento } from "../servicos/agendamento";
 
 export default {
@@ -86,8 +86,8 @@ export default {
             this.exibirModal = true;
         },
         onAgendamentoSelecionado(agendamento) {
-            agendamento.data = new Date(agendamento.data);
-            this._abrirModalAgendamento(agendamento);
+            const clone = clonarAgendamento(agendamento);
+            this._abrirModalAgendamento(clone);
         },
         fecharModal() {
             this.agendamentoSelecionado = null;
