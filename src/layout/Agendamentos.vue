@@ -44,8 +44,8 @@ import ItemAgendamento from "../componentes/ItemAgendamento.vue";
 import ModalAgendamento from "./ModalAgendamento.vue";
 import CabecalhoAgendamentos from "./CabecalhoAgendamentos.vue";
 
-import { obterAgendamentos, clonarAgendamento } from "../servicos/persistencia";
-import { novoAgendamento } from "../servicos/agendamento";
+import { obterAgendamentos } from "../servicos/persistencia";
+import { novoAgendamento, clonarAgendamento } from "../servicos/agendamento";
 
 export default {
     components: {

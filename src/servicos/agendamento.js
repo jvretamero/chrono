@@ -33,3 +33,18 @@ export const validarAgendamento = function (obj) {
 
     return validacoes;
 };
+
+export const ajustarData = function (agendamento) {
+    // Ajuste necessário pois as datas foram salvas como JSON
+    // ou seja, transformadas em string
+    agendamento.data = new Date(agendamento.data);
+};
+
+export const clonarAgendamento = function (agendamento) {
+    const str = JSON.stringify(agendamento);
+
+    const novoAgendamento = JSON.parse(str);
+    ajustarData(novoAgendamento);
+
+    return novoAgendamento;
+};
