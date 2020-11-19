@@ -1,7 +1,7 @@
 <template>
     <div class="agendamentos-cabecalho">
         <span class="data-selecionada">{{ dataFormatada }}</span>
-        <button type="button" class="botao" @click="notificarNovoAgendamento">
+        <button type="button" class="botao novo-agendamento" @click="notificarNovoAgendamento">
             +
         </button>
     </div>
