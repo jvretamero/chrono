@@ -4,34 +4,48 @@ const CHAVE_AGENDAMENTOS = "agendamentos";
 const storage = window.sessionStorage;
 let listaAgendamento = null;
 
-const persistirAgendamentos = function (agendamentos) {
-    storage.setItem(CHAVE_AGENDAMENTOS, JSON.stringify(agendamentos));
+const persistirAgendamentos = function () {
+    storage.setItem(CHAVE_AGENDAMENTOS, JSON.stringify(listaAgendamento));
 };
 
 export const obterAgendamentos = function () {
     if (listaAgendamento == null) {
         const agendamentosStr = storage.getItem(CHAVE_AGENDAMENTOS);
-        const agendamentos = agendamentosStr ? JSON.parse(agendamentosStr) : [];
+        const agendamentos = agendamentosStr ? JSON.parse(agendamentosStr) : {};
 
         listaAgendamento = {};
 
-        // Ajuste necessário pois as datas foram salvas como JSON
-        // ou seja, transformadas em string
-        agendamentos.forEach(function (agendamento) {
-            agendamento.data = new Date(agendamento.data);
+        for (let id in agendamentos) {
+            const agendamento = agendamentos[id];
+            ajustarData(agendamento);
 
-            listaAgendamento[agendamento.id] = agendamento;
-        });
+            listaAgendamento[id] = agendamento;
+        }
     }
 
     return listaAgendamento;
 };
 
 export const persistirAgendamento = function (agendamento) {
-    agendamento.id = gerarId();
+    if (!agendamento.id)
+        agendamento.id = gerarId();
 
-    const agendamentos = obterAgendamentos();
-    agendamentos[agendamento.id] = agendamento;
+    listaAgendamento[agendamento.id] = agendamento;
 
-    persistirAgendamentos(agendamentos);
+    persistirAgendamentos();
+};
+
+const ajustarData = function (agendamento) {
+    // Ajuste necessário pois as datas foram salvas como JSON
+    // ou seja, transformadas em string
+    agendamento.data = new Date(agendamento.data);
+};
+
+export const clonarAgendamento = function (agendamento) {
+    const str = JSON.stringify(agendamento);
+
+    const novoAgendamento = JSON.parse(str);
+    ajustarData(novoAgendamento);
+
+    return novoAgendamento;
 };
