@@ -21,6 +21,12 @@
     </div>
 </template>
 
+<style scoped>
+.calendario-nav {
+    margin: 1rem 0 1rem 0;
+}
+</style>
+
 <script>
 import {
     mesAtual,

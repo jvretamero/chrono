@@ -11,6 +11,44 @@
     </li>
 </template>
 
+<style scoped>
+.agendamento {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 1rem;
+}
+
+.agendamento:hover {
+    cursor: pointer;
+    background-color: #e2f5dc;
+}
+
+.agendamento-horario,
+.agendamento-dados {
+    display: flex;
+    flex-direction: column;
+}
+
+.agendamento-dados {
+    margin-left: 2rem;
+}
+
+.agendamento-horario .horario-inicio {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.agendamento-horario .horario-termino,
+.agendamento-dados .categoria {
+    color: #666;
+}
+
+.agendamento-dados .titulo {
+    font-size: 1.3rem;
+}
+</style>
+
 <script>
 export default {
     props: ["agendamento"],

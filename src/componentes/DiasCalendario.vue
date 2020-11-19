@@ -10,7 +10,7 @@
             <th>Sab</th>
         </thead>
 
-        <tbody id="dias-mes">
+        <tbody>
             <tr v-for="(semana, idxSemana) in semanasDias" :key="idxSemana">
                 <td
                     v-for="(dia, idxDia) in semana"
@@ -27,6 +27,47 @@
         </tbody>
     </table>
 </template>
+
+<style scoped>
+.table-mes {
+    table-layout: fixed;
+    padding: 1rem;
+    border-collapse: collapse;
+    margin: 0 1rem 0 1rem;
+}
+
+.table-mes thead {
+    border-bottom: 1px solid #457b9d;
+    margin-bottom: 1rem;
+}
+
+.table-mes td,
+.table-mes th {
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+    text-align: center;
+}
+
+.table-mes tbody tr:hover {
+    background-color: #cae9ea;
+}
+
+.table-mes td.com-dia:hover {
+    background-color: #f6b9be;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.table-mes td.ativo {
+    background-color: #f19199;
+    border-radius: 50%;
+}
+
+.table-mes td.ativo:hover {
+    background-color: #ef7d87;
+}
+</style>
 
 <script>
 import { calcularDias } from "../servicos/calendario";
