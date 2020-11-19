@@ -37,6 +37,30 @@
     </div>
 </template>
 
+<style scoped>
+.calendario {
+    background-color: #a8dadc;
+    height: 100vh;
+}
+
+.agendamentos {
+    flex: 1 0 auto;
+}
+
+.agendamentos ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+</style>
+
 <script>
 import CalendarioNav from "../componentes/CalendarioNav.vue";
 import DiasCalendario from "../componentes/DiasCalendario.vue";
