@@ -59,6 +59,27 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
+    margin: 0 auto;
+    max-width: 52rem;
+}
+
+@media (max-width: 576px) {
+    .container {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .calendario {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .agendamentos {
+        width: 100%;
+    }
 }
 </style>
 
