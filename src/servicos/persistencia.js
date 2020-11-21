@@ -10,6 +10,14 @@ const persistirAgendamentos = function () {
     storage.setItem(CHAVE_AGENDAMENTOS, JSON.stringify(listaAgendamento));
 };
 
+export const removerAgendamento = function (id) {
+    if (listaAgendamento[id]) {
+        delete listaAgendamento[id];
+
+        persistirAgendamentos();
+    }
+};
+
 export const obterAgendamentos = function (data) {
     if (listaAgendamento == null) {
         const agendamentosStr = storage.getItem(CHAVE_AGENDAMENTOS);

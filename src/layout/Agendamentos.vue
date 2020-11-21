@@ -23,6 +23,7 @@
                             :key="indice"
                             :agendamento="agendamento"
                             @click="onAgendamentoSelecionado"
+                            @remover="onRemoverAgendamento"
                         />
                     </ul>
                 </div>
@@ -39,7 +40,7 @@
 
 <style scoped>
 .calendario {
-    background-color: #EDEDFF;
+    background-color: #ededff;
     height: 100vh;
 }
 
@@ -68,7 +69,10 @@ import ItemAgendamento from "../componentes/ItemAgendamento.vue";
 import ModalAgendamento from "./ModalAgendamento.vue";
 import CabecalhoAgendamentos from "./CabecalhoAgendamentos.vue";
 
-import { obterAgendamentos } from "../servicos/persistencia";
+import {
+    obterAgendamentos,
+    removerAgendamento,
+} from "../servicos/persistencia";
 import { novoAgendamento, clonarAgendamento } from "../servicos/agendamento";
 
 export default {
@@ -118,6 +122,10 @@ export default {
             this.exibirModal = false;
 
             if (houveModificacao) this.listarAgendamentos();
+        },
+        onRemoverAgendamento(id) {
+            removerAgendamento(id);
+            this.listarAgendamentos();
         },
     },
 };

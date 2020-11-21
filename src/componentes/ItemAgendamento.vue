@@ -8,6 +8,11 @@
             <span class="categoria">{{ agendamento.categoria }}</span>
             <span class="titulo">{{ agendamento.assunto }}</span>
         </div>
+        <div class="agendamento-acoes">
+            <button type="button" class="botao" @click.stop="notificarRemocao">
+                Remover
+            </button>
+        </div>
     </li>
 </template>
 
@@ -15,13 +20,13 @@
 .agendamento {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     padding: 1rem;
 }
 
 .agendamento:hover {
     cursor: pointer;
-    background-color: #E1E1F2;
+    background-color: #e1e1f2;
 }
 
 .agendamento-horario,
@@ -32,6 +37,7 @@
 
 .agendamento-dados {
     margin-left: 2rem;
+    flex: 1;
 }
 
 .agendamento-horario .horario-inicio {
@@ -47,6 +53,17 @@
 .agendamento-dados .titulo {
     font-size: 1.3rem;
 }
+
+.agendamento-acoes .botao {
+    padding: 0.5rem;
+    border: 1px solid #654480;
+    color: #654480;
+    border-radius: 0.5rem;
+}
+
+.agendamento-acoes .botao:hover {
+    background-color: #fff;
+}
 </style>
 
 <script>
@@ -55,6 +72,9 @@ export default {
     methods: {
         notificarAgendamentoSelecionado() {
             this.$emit("click", this.agendamento);
+        },
+        notificarRemocao() {
+            this.$emit("remover", this.agendamento.id);
         },
     },
 };
