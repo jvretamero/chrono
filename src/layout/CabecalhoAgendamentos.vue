@@ -11,7 +11,7 @@
     </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .agendamentos-cabecalho {
     padding: 1rem;
 }
@@ -30,10 +30,10 @@
     height: 2.5rem;
     padding: 0;
     color: #fff;
-}
 
-.novo-agendamento:hover {
-    background-color: #B57AE6;
+    &:hover {
+        background-color: #b57ae6;
+    }
 }
 </style>
 

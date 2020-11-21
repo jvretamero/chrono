@@ -16,17 +16,17 @@
     </li>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .agendamento {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 1rem;
-}
 
-.agendamento:hover {
-    cursor: pointer;
-    background-color: #e1e1f2;
+    &:hover {
+        cursor: pointer;
+        background-color: #e1e1f2;
+    }
 }
 
 .agendamento-horario,
@@ -38,6 +38,10 @@
 .agendamento-dados {
     margin-left: 2rem;
     flex: 1;
+
+    .titulo {
+        font-size: 1.3rem;
+    }
 }
 
 .agendamento-horario .horario-inicio {
@@ -50,19 +54,15 @@
     color: #666;
 }
 
-.agendamento-dados .titulo {
-    font-size: 1.3rem;
-}
-
 .agendamento-acoes .botao {
     padding: 0.5rem;
     border: 1px solid #654480;
     color: #654480;
     border-radius: 0.5rem;
-}
 
-.agendamento-acoes .botao:hover {
-    background-color: #fff;
+    &:hover {
+        background-color: #fff;
+    }
 }
 </style>
 

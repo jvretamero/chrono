@@ -98,7 +98,7 @@
     </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .modal {
     display: none;
     position: fixed;
@@ -110,10 +110,10 @@
     right: 0;
     bottom: 0;
     left: 0;
-}
 
-.modal.modal-ativo {
-    display: flex;
+    &.modal-ativo {
+        display: flex;
+    }
 }
 
 .modal-fundo {
@@ -157,10 +157,10 @@
     background-color: #f5f5f5;
     padding: 0.5rem;
     border-radius: 0.25rem;
-}
 
-.modal-botao-fechar:hover {
-    background-color: #eee;
+    &:hover {
+        background-color: #eee;
+    }
 }
 
 .modal-rodape {
@@ -176,10 +176,10 @@
     background-color: #5691b5;
     padding: 0.5rem;
     border-radius: 0.25rem;
-}
 
-.modal-botao-salvar:hover {
-    background-color: #457b9d;
+    &:hover {
+        background-color: #457b9d;
+    }
 }
 
 .label {

@@ -28,49 +28,49 @@
     </table>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .table-mes {
     table-layout: fixed;
     padding: 1rem;
     border-collapse: collapse;
     margin: 0 1rem 0 1rem;
     color: #462f59;
-}
 
-.table-mes thead {
-    color: #654480;
-    border-bottom: 1px solid #654480;
-}
+    thead {
+        color: #654480;
+        border-bottom: 1px solid #654480;
+    }
 
-.table-mes td,
-.table-mes th {
-    width: 3rem;
-    height: 3rem;
-    padding: 0;
-    text-align: center;
-}
+    td,
+    th {
+        width: 3rem;
+        height: 3rem;
+        padding: 0;
+        text-align: center;
+    }
 
-.table-mes th {
-    padding-bottom: 0.3rem;
-}
+    th {
+        padding-bottom: 0.3rem;
+    }
 
-.table-mes tbody tr:hover {
-    background-color: #e1e1f2;
-}
+    tbody tr:hover {
+        background-color: #e1e1f2;
+    }
 
-.table-mes td.com-dia:hover {
-    background-color: #ccba6c;
-    cursor: pointer;
-    border-radius: 50%;
-}
+    td.com-dia:hover {
+        background-color: #ccba6c;
+        cursor: pointer;
+        border-radius: 50%;
+    }
 
-.table-mes td.ativo {
-    background-color: #f2d58d;
-    border-radius: 50%;
-}
+    td.ativo {
+        background-color: #f2d58d;
+        border-radius: 50%;
 
-.table-mes td.ativo:hover {
-    background-color: #ccba6c;
+        &:hover {
+            background-color: #ccba6c;
+        }
+    }
 }
 </style>
 

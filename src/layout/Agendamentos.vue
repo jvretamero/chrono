@@ -38,7 +38,7 @@
     </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .calendario {
     background-color: #ededff;
     height: 100vh;
@@ -46,12 +46,12 @@
 
 .agendamentos {
     flex: 1 0 auto;
-}
 
-.agendamentos ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
 }
 
 .container {

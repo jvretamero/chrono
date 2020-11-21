@@ -21,14 +21,14 @@
     </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .calendario-nav {
     margin: 1rem 0 1rem 0;
-}
 
-.calendario-nav .botao,
-.calendario-nav .select {
-    color: #654480;
+    .botao,
+    .select {
+        color: #654480;
+    }
 }
 </style>
 
