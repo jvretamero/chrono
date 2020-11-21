@@ -39,7 +39,7 @@
 
 <style scoped>
 .calendario {
-    background-color: #a8dadc;
+    background-color: #EDEDFF;
     height: 100vh;
 }
 

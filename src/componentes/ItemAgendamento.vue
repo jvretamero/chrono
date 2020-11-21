@@ -21,7 +21,7 @@
 
 .agendamento:hover {
     cursor: pointer;
-    background-color: #e2f5dc;
+    background-color: #E1E1F2;
 }
 
 .agendamento-horario,

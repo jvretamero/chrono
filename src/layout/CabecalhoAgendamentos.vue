@@ -24,7 +24,7 @@
 }
 
 .novo-agendamento {
-    background-color: #5691b5;
+    background-color: #785199;
     border-radius: 50%;
     width: 2.5rem;
     height: 2.5rem;
@@ -33,7 +33,7 @@
 }
 
 .novo-agendamento:hover {
-    background-color: #457b9d;
+    background-color: #B57AE6;
 }
 </style>
 

@@ -34,11 +34,12 @@
     padding: 1rem;
     border-collapse: collapse;
     margin: 0 1rem 0 1rem;
+    color: #462f59;
 }
 
 .table-mes thead {
-    border-bottom: 1px solid #457b9d;
-    margin-bottom: 1rem;
+    color: #654480;
+    border-bottom: 1px solid #654480;
 }
 
 .table-mes td,
@@ -49,23 +50,27 @@
     text-align: center;
 }
 
+.table-mes th {
+    padding-bottom: 0.3rem;
+}
+
 .table-mes tbody tr:hover {
-    background-color: #cae9ea;
+    background-color: #e1e1f2;
 }
 
 .table-mes td.com-dia:hover {
-    background-color: #f6b9be;
+    background-color: #ccba6c;
     cursor: pointer;
     border-radius: 50%;
 }
 
 .table-mes td.ativo {
-    background-color: #f19199;
+    background-color: #f2d58d;
     border-radius: 50%;
 }
 
 .table-mes td.ativo:hover {
-    background-color: #ef7d87;
+    background-color: #ccba6c;
 }
 </style>
 
